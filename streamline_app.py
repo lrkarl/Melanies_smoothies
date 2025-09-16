@@ -33,8 +33,9 @@ ingredients_list = st.multiselect(
 )
 
 if ingredients_list:
-    # Build clean string without trailing space
-    ingredients_string = " ".join(ingredients_list)
+    ingredients_string = " ".join(
+    pd_df.loc[pd_df['FRUIT_NAME'].isin(ingredients_list), 'SEARCH_ON']
+)
 
     for fruit_chosen in ingredients_list:
         search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
